@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator-HTML,CSS,JS
+    </title>
+    <link rel="stylesheet" href="calstyle.css">
+</head>
+<body>
+    <h1>Welcome to Calculator!</h1>
+    <div class="outerbox">
+        <div class="screen" id="s">
+            <div class="screen" id="result">Calulate here</div>
+        <input class="screen" id="input" placeholder="0">
+        </div>
+        <div class="opBox">
+        <div class="rows">
+        <button class="numbers" id="1">1</button>
+        <button class="numbers" id="2">2</button>
+        <button class="numbers" id="3">3</button>
+        <button class="numbers" id="add">+</button>
+
+    </div>
+    <div class="rows">
+
+        <button class="numbers" id="4">4</button>
+        <button class="numbers" id="5">5</button>
+        <button class="numbers" id="6">6</button>
+        <button class="numbers" id="min">-</button>
+
+    </div>
+
+    <div class="rows">
+
+        <button class="numbers" id="7">7</button>
+        <button class="numbers" id="8">8</button>
+        <button class="numbers" id="9">9</button>
+        <button class="numbers" id="mul">*</button>
+
+    </div>
+    <div class="rows">
+
+        <button class="numbers" id="div">/</button>
+        <button class="numbers" id="0">0</button>
+        <button class="numbers" id="clear">AC</button>
+        <button class="numbers" id="Equal">=</button>
+
+    </div>
+</div>
+
+    </div>
+
+    <script>
+    let string="";
+
+
+        var display=document.getElementById("s");
+
+        var btn=Array.from(document.getElementsByClassName("numbers"));
+         //since Classname gets you collection of elements you need to convert it to  array to perform array operations
+        btn.forEach((item)=>{
+            //for each adds function to all elements
+            item.addEventListener('click',(e)=>{
+                //for "="
+               try {if(e.target.innerHTML=="="){
+                    if(string=="")
+                    {
+                        alert("Enter a value");
+                        document.getElementById('input').value=string;
+                    }
+                    else{
+                    string=eval(string);
+                //eval method executes maths in a string
+                    document.getElementById('input').value=string;
+                    }
+
+                }
+                else if(e.target.innerHTML=="AC"){
+                    string="";
+                    document.getElementById('input').value=string;
+                }
+                else{
+            //target returns element where a event has occured
+                string=string+e.target.innerHTML;
+                document.getElementById('input').value=string;
+
+         } }
+         catch(err)
+         {
+            string="error";
+            document.getElementById('input').value=string;
+            string="";
+         }
+        })
+        })
+        
+
+    </script>
+</body>
+</html>
